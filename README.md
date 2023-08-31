@@ -15,4 +15,7 @@ aws secretsmanager get-secret-value --secret-id ddns-api-key
 ```
 
 ## Setup client
-Move both files in the `client` directory to the server where you want to run the client. Run the `install.sh` script to install the client. The client will run every hour and will update the DNS record.
+1. Move both files in the `client` directory to the server where you want to run the client.
+2. Set the `API_KEY` and `API_URL`(add `/update` to the url from the stack output) variables in the `ddns.sh` script.
+3. Run the `install.sh` script to install the client. 
+4. The client will run every hour and will update the DNS record.
