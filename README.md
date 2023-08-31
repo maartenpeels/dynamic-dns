@@ -1,14 +1,18 @@
-# Welcome to your CDK TypeScript project
+# Dynamic DNS
 
-This is a blank project for CDK development with TypeScript.
+## Deploy
+```bash
+cdk deploy --parameters hostedzoneparamddns=#### --parameters hostedzonenameparamddns=#### --parameters subdomainparamddns=####
+``````
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+- **hostedzoneparamddns**: Hosted Zone ID
+- **hostedzonenameparamddns**: Hosted Zone Name
+- **subdomainparamddns**: Subdomain to create & update
 
-## Useful commands
+## Find Api Key
+```bash
+aws secretsmanager get-secret-value --secret-id ddns-api-key
+```
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## Setup client
+Move both files in the `client` directory to the server where you want to run the client. Run the `install.sh` script to install the client. The client will run every hour and will update the DNS record.
